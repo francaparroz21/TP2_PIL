@@ -1,16 +1,25 @@
+
 public class Serial {
-    private long num;
-    public Serial(long num) {
+    private String num;
+    public Serial(String num) {
         this.num = num;
     }
 
-    public long getNum() {
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getNum() {
         return num;
     }
 
     @Override
     public String toString() {
-        return Long.toString(getNum());
+        return getNum();
+    }
+
+    public boolean equals(Serial s){
+        return getNum().equals(s.getNum());
     }
 
 }
