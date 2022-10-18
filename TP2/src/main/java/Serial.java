@@ -3,4 +3,14 @@ public class Serial {
     public Serial(long num) {
         this.num = num;
     }
+
+    public long getNum() {
+        return num;
+    }
+
+    @Override
+    public String toString() {
+        return Long.toString(getNum());
+    }
+
 }
