@@ -20,6 +20,58 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         list1.put(key,value);
     }
 
+    public int countValuesKey(K key){
+        int count = 0;
+
+        if (list1.get(key) != null){
+            for (Map.Entry<K, V> entry : list1.entrySet()) {
+                if (list1.get(key).equals(entry.getValue())){
+                    count+=1;
+                }
+            }
+        }
+        if (list2.get(key) != null){
+            for (Map.Entry<K, T> entry : list2.entrySet()) {
+                if (list2.get(key).equals(entry.getValue())){
+                    count+=1;
+                }
+            }
+        }
+        return count;
+    }
+
+
+    //SIMPLIFICAAAAAAAAAAAAAAAAARR
+    public boolean repeatedValues(){
+        for (Map.Entry<K, V> access : list1.entrySet()) {
+            for (Map.Entry<K, V> entry : list1.entrySet()) {
+                if (!access.getKey().equals(entry.getKey())&&access.getValue().equals(entry.getValue())){
+                    return true;
+                }
+            }
+            for (Map.Entry<K, T> entry : list2.entrySet()) {
+                if (!access.getKey().equals(entry.getKey())&&access.getValue().equals(entry.getValue())){
+                    return true;
+                }
+            }
+        }
+        for (Map.Entry<K, T> access : list2.entrySet()) {
+            for (Map.Entry<K, T> entry : list2.entrySet()) {
+                if (!access.getKey().equals(entry.getKey())&&access.getValue().equals(entry.getValue())){
+                    return true;
+                }
+            }
+            for (Map.Entry<K, V> entry : list1.entrySet()) {
+                if (!access.getKey().equals(entry.getKey())&&access.getValue().equals(entry.getValue())){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
     public void countValues(){
         int countV = 0,countT = 0;
         for (Map.Entry<K, V> entry : list1.entrySet()) {
