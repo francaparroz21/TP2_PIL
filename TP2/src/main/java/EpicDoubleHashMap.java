@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 class EpicDoubleHashMap<K extends Number,V,T> {
     HashMap<K,V> list1;
@@ -9,24 +10,47 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         this.list2 = new HashMap<K,T>();
     }
 
-    public void addFirst(K key,V value) throws KeyAlreadyExists  {
+    public void addFirst(K key,V value) throws KeyAlreadyExists,ThreeSameValues {
+        if (threeSameValues(value)){
+            throw new ThreeSameValues();
+        }
         if (list1.containsKey(key)) {
             throw new KeyAlreadyExists();
         }
-
         list1.put(key,value);
     }
 
+    public void countValues(){
+        int countV = 0,countT = 0;
+        for (Map.Entry<K, V> entry : list1.entrySet()) {
+            countV +=1;
+        }
+        for (Map.Entry<K, T> entry : list2.entrySet()) {
+            countT += 1;
+        }
 
-    public void addSecond(K key,T value)throws KeyAlreadyExists{
+        if (countV>countT){
+            System.out.println("There are more V values than T");
+        } else if (countT > countV) {
+            System.out.println("There are more T values than V");
+        }
+        else {
+            System.out.println("There are the same amount of values");
+        }
+    }
+
+    public void addSecond(K key,T t)throws KeyAlreadyExists,ThreeSameValues{
+        if (threeSameValues(t)){
+            throw new ThreeSameValues();
+        }
         if (list2.containsKey(key)){
             throw new KeyAlreadyExists();
         }
-        list2.put(key,value);
+        list2.put(key,t);
     }
-    public void addTwo(K key, V value, T value2){
-        list1.put(key,value);
-        list2.put(key,value2);
+    public void addTwo(K key, V value, T value2) throws KeyAlreadyExists,ThreeSameValues {
+        addFirst(key,value);
+        addSecond(key,value2);
     }
 
     public V getFirst(K key) throws InexistentValue{
@@ -43,20 +67,35 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         return list2.get(key);
     }
 
+    //PREGUNTAR SI VA CON OBJECT
+    public boolean threeSameValues(Object value){
+        int count = 0;
+        for (Map.Entry<K, V> entry : list1.entrySet()) {
+            if (value.equals(entry.getValue())){
+                count +=1;
+            }
+        }
+        for (Map.Entry<K, T> entry : list2.entrySet()) {
+            if (value.equals(entry.getValue())) {
+                count += 1;
+            }
+        }
+        return count >= 3;
+    }
+
     //PREGUNTARLEEEEEEEEEEEEEEEEEEEEEEEE  STRING   EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
     public String getTwo(K key) throws InexistentValue{
         return getFirst(key).toString() + getSecond(key).toString();
     }
     //PREGUNTARLEEEEEEEEEEEEEEEEEEEEEEEE  STRING   EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
-    public void removeItem(K key) throws InexistentKey{
-        if (list1.containsKey(key)){
+    public void removeItem(K key) throws InexistentKey {
+        if (list1.containsKey(key)) {
             list1.remove(key);
         }
-        if (list2.containsKey(key)){
+        if (list2.containsKey(key)) {
             list2.remove(key);
-        }
-        else {
+        } else {
             throw new InexistentKey();
         }
     }

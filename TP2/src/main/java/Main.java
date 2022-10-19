@@ -13,13 +13,14 @@ public class Main {
 
 
         try {
-            //---------
-            map.addFirst(13, "HOLAPALERMO");
-            map.addSecond(13, serial);
-            map.removeItem(13);
-            map.addSecond(13, "HGOLALADSDASDASD");
-            map.removeItem(13);
-            map.addFirst(13,1238124);
+            map.addSecond(1283,"chau");
+            map.addSecond(191919,"chau");
+            map.addTwo(3,"asdasd","hola");
+            map.addFirst(10,d1);
+            map.addFirst(1,d2);
+            map.addFirst(101010,d1);
+            map.countValues();
+            System.out.println("asdasd");
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
