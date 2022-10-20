@@ -21,23 +21,7 @@ class EpicDoubleHashMap<K extends Number,V,T> {
     }
 
     public int countValuesKey(K key){
-        int count = 0;
-
-        if (list1.get(key) != null){
-            for (Map.Entry<K, V> entry : list1.entrySet()) {
-                if (list1.get(key).equals(entry.getValue())){
-                    count+=1;
-                }
-            }
-        }
-        if (list2.get(key) != null){
-            for (Map.Entry<K, T> entry : list2.entrySet()) {
-                if (list2.get(key).equals(entry.getValue())){
-                    count+=1;
-                }
-            }
-        }
-        return count;
+        return 1;
     }
 
 
