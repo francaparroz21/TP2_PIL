@@ -49,6 +49,10 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         list2.put(key,value);
     }
 
+    public int countValuesKey(K key){
+        return 1;
+    }
+
 
     public void addTwo(K key, V value, T value2) throws KeyAlreadyExists,ThreeSameValues {
         if (list1.containsKey(key)||list2.containsKey(key)){
@@ -102,6 +106,34 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         else {
             System.out.println("There are the same amount of values");
         }
+    }
+
+    public int contarMismosValores(K key) {
+        if (!list1.containsKey(key) && !list2.containsKey(key)) return 0;
+
+        // sabemos que existe al menos la key en algun mapa por lo tanto tenemos algun valor
+        V valueV = list1.containsKey(key) ? list1.get(key) : null;
+        T valueT = list2.containsKey(key) ? list2.get(key) : null;
+
+        int contador = 0;
+         if (valueV != null && valueT == null) {
+            for (V elementoValor : list1.values()) {
+                if (elementoValor.equals(valueV)) contador++;
+            }
+        }
+         if (valueT != null && valueV == null) {
+            for (T elementoValor : list2.values()) {
+                if (elementoValor.equals(valueT)) contador++;
+            }
+        }
+
+         for (V elementoValorV : list1.values()) {
+             for (T elementoValorT : list2.values()) {
+                 if (elementoValorV.equals(valueV) && elementoValorT.equals(valueT)) contador++;
+             }
+         }
+
+        return contador;
     }
 
     public int countSameValues(K key){

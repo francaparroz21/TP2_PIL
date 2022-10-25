@@ -15,7 +15,7 @@ public class Main {
             map.addTwo(3,serial,d1);
             map.addTwo(5,serial,d1);
 
-            System.out.println(map.countSameValues(13));
+            System.out.println(map.contarMismosValores(13));
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
