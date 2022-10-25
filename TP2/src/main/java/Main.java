@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        EpicDoubleHashMap<Number,Object,Object> map = new EpicDoubleHashMap<>();
+        EpicDoubleHashMap<Number,Serial,Dog> map = new EpicDoubleHashMap<>();
         Serial serial = new Serial("1ASDUOHASDUA6278");
         Serial serial2 = new Serial("1ASDUOHASDUA6278");
 
@@ -11,9 +11,11 @@ public class Main {
 
 
         try {
-            map.addFirst(13,"hola");
-            map.addSecond(45,"hola");
-            System.out.println(map.repeatedValues());
+            map.addTwo(13,serial,d1);
+            map.addTwo(3,serial,d1);
+            map.addTwo(5,serial,d1);
+
+            System.out.println(map.countSameValues(13));
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
