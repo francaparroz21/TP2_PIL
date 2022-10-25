@@ -12,8 +12,10 @@ public class Main {
 
         try {
             map.addTwo(13,serial,d1);
-            map.addTwo(3,serial,d1);
-            map.addTwo(5,serial,d1);
+            map.addTwo(3,serial2,d1);
+            map.addTwo(32,serial,d1);
+
+
 
             System.out.println(map.contarMismosValores(13));
         }catch (Exception e){

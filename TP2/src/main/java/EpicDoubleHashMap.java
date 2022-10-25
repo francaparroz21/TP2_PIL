@@ -127,11 +127,12 @@ class EpicDoubleHashMap<K extends Number,V,T> {
             }
         }
 
-         for (V elementoValorV : list1.values()) {
-             for (T elementoValorT : list2.values()) {
-                 if (elementoValorV.equals(valueV) && elementoValorT.equals(valueT)) contador++;
+         for (Map.Entry<K,V>entry1 : list1.entrySet()) {
+             for (Map.Entry<K,T>entry2 : list2.entrySet()){
+                 if (entry1.getKey().equals(entry2.getKey()) && valueV.equals(entry1.getValue()) && valueT.equals(entry2.getValue()))contador++;
+
              }
-         }
+        }
 
         return contador;
     }
