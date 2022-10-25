@@ -20,10 +20,6 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         list1.put(key,value);
     }
 
-    public int countValuesKey(K key){
-        return 1;
-    }
-
 
     //SIMPLIFICAAAAAAAAAAAAAAAAARR
     public boolean repeatedValues(){
