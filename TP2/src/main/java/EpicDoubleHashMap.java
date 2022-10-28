@@ -106,7 +106,6 @@ class EpicDoubleHashMap<K extends Number,V,T> {
     public int countSameValues(K key){
         if (!list1.containsKey(key) && !list2.containsKey(key)) return 0;
 
-        // sabemos que existe al menos la key en algun mapa por lo tanto tenemos algun valor
         V valueV = list1.getOrDefault(key, null);
         T valueT = list2.getOrDefault(key, null);
 
