@@ -2,6 +2,12 @@ public class Dog {
     private String name;
     private int years;
 
+    @Override
+    public String toString() {
+        return "Name: "+getName()+"\n" +
+                "Years: "+getYears();
+    }
+
     public String getName() {
         return name;
     }

@@ -9,7 +9,10 @@ public class Main {
 
 
         Dog d1 = new Dog("a",1);
-        Dog d22 = new Dog("aasd",1);
+        Dog d2 = new Dog("aasd",1);
+        Dog d3 = new Dog("a",1);
+        Dog d4 = new Dog("a",1);
+
 
 
 
@@ -17,6 +20,11 @@ public class Main {
         try {
             map.addFirst(13,serial1);
             map.addFirst(3,serial4);
+            map.addTwo(10,serial1,d2);
+
+            map.countValues();
+            System.out.println(map.countSameValues(13));
+            System.out.println(map.repeatedValues());
 
 
             System.out.println(map.countSameValues(13));
