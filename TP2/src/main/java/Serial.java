@@ -18,8 +18,10 @@ public class Serial {
         return "Num: "+getNum();
     }
 
-    public boolean equals(Serial s){
-        return getNum().equals(s.getNum());
+    @Override
+    public boolean equals(Object o){
+        Serial serial = (Serial) o;
+        return num.equals(serial.num);
     }
 
 }

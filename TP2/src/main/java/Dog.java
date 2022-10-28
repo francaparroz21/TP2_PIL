@@ -29,7 +29,9 @@ public class Dog {
         this.years = years;
     }
 
-    public boolean equals(Dog d){
-        return getName().equals(d.getName())&&getYears()==d.getYears();
+    @Override
+    public boolean equals(Object o){
+        Dog dog = (Dog) o;
+        return name.equals(dog.name)&&years==dog.years;
     }
 }

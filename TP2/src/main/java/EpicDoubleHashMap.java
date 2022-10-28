@@ -112,22 +112,24 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         int count = 0;
 
          if (valueV != null && valueT == null) {
-            for (V element : list1.values()) {
-                if (element.equals(valueV)) count++;
-            }
+             for (Map.Entry<K,V>entry1 : list1.entrySet()) {
+                 if (!key.equals(entry1.getKey())&&valueV.equals(entry1.getValue()))count++;
+             }
         }
-         else if (valueT != null && valueV == null) {
-            for (T element : list2.values()) {
-                if (element.equals(valueT)) count++;
+        if (valueT != null && valueV == null) {
+            for (Map.Entry<K,T>entry2 : list2.entrySet()) {
+                if (!key.equals(entry2.getKey())&&valueV.equals(entry2.getValue()))count++;
             }
         }
 
-         for (Map.Entry<K,V>entry1 : list1.entrySet()) {
-             for (Map.Entry<K,T>entry2 : list2.entrySet()){
-                 if (entry1.getKey().equals(entry2.getKey())){
-                    if (valueV.equals(entry1.getValue()) && valueT.equals(entry2.getValue())) count++;
+        if (valueV != null && valueT != null){
+            for (Map.Entry<K,V>entry1 : list1.entrySet()) {
+                for (Map.Entry<K,T>entry2 : list2.entrySet()){
+                    if (!key.equals(entry1.getKey())&&entry1.getKey().equals(entry2.getKey())){
+                        if (valueV.equals(entry1.getValue()) && valueT.equals(entry2.getValue())) count++;
+                     }
                  }
-             }
+            }
         }
         return count;
     }
