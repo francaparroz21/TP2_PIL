@@ -125,8 +125,8 @@ class EpicDoubleHashMap<K extends Number,V,T> {
         if (valueV != null && valueT != null){
             for (Map.Entry<K,V>entry1 : list1.entrySet()) {
                 for (Map.Entry<K,T>entry2 : list2.entrySet()){
-                    if (!key.equals(entry1.getKey())&&entry1.getKey().equals(entry2.getKey())){
-                        if (valueV.equals(entry1.getValue()) && valueT.equals(entry2.getValue())) count++;
+                    if (!key.equals(entry1.getKey())&&!key.equals(entry2.getKey())&&entry1.getKey().equals(entry2.getKey())){
+                        if (entry1.getValue()!=null&&entry2.getValue()!=null&&valueV.equals(entry1.getValue()) && valueT.equals(entry2.getValue())) count++;
                      }
                  }
             }

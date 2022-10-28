@@ -18,12 +18,10 @@ public class Main {
 
 
         try {
-            map.addFirst(13,serial1);
-            map.addFirst(2,serial4);
-            map.addTwo(10,serial1,d2);
+            map.addSecond(13,d1);
+            map.addSecond(3,d1);
             System.out.println(map.repeatedValues());
 
-            map.countValues();
             System.out.println(map.countSameValues(13));
             System.out.println(map.repeatedValues());
 
