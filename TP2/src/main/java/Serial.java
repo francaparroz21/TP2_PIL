@@ -15,7 +15,7 @@ public class Serial {
 
     @Override
     public String toString() {
-        return getNum();
+        return "Num: "+getNum();
     }
 
     public boolean equals(Serial s){
